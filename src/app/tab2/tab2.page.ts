@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-tab2',
@@ -8,6 +9,20 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  sharedData: { websiteName: string; emailAddress: string; password: string }[] = [];
 
+  constructor(private appComponent: AppComponent) {}
+
+  ionViewWillEnter() {
+    this.sharedData = this.appComponent.sharedData;
+  }
+
+
+  deleteEntry(index: number) {
+    const confirmDelete = confirm('Are you sure you want to delete this entry?');
+    if (confirmDelete) {
+      this.sharedData.splice(index, 1);
+      this.appComponent.sharedData = this.sharedData;
+    }
+  }
 }
