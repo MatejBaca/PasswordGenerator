@@ -1,17 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+     Password generator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Website name</ion-label>
+      <ion-input [(ngModel)]="websiteName" name="websiteName" placeholder="Enter website"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-item>
+      <ion-label position="stacked">Username</ion-label>
+      <ion-input [(ngModel)]="username" name="username" placeholder="Enter username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email Address</ion-label>
+      <ion-input [(ngModel)]="emailAddress" name="emailAddress" type="email" placeholder="Enter email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input [(ngModel)]="password" name="password" placeholder="Enter password" [readonly]="isGenerated"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="generatePassword()">Generate Password</ion-button>
+    <ion-item lines="none">
+      <ion-checkbox slot="start" [(ngModel)]="isGenerated" name="isGenerated"></ion-checkbox>
+      <ion-label>Use Generated Password</ion-label>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" color="primary">Save Password</ion-button>
+  </form>
 </ion-content>
