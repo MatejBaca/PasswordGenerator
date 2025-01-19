@@ -1,17 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Settings
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-label>App Version</ion-label>
+      <ion-note slot="end">1.0.0</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">Dark Mode</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Backup Frequency</ion-label>
+      <ion-select [(ngModel)]="backupFrequency" (ionChange)="onBackupFrequencyChange($event)">
+        <ion-select-option value="daily">Daily</ion-select-option>
+        <ion-select-option value="weekly">Weekly</ion-select-option>
+        <ion-select-option value="monthly">Monthly</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
