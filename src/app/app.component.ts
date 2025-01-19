@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
+  sharedData: { websiteName: string; emailAddress: string; password: string }[] = [];
   constructor() {}
 }
